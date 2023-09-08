@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="main.css">
+<script src="main.js" defer></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>超シンプル！クトゥルフ神話に使えるダイスロールサイト</title>
+<meta name="description" content="クトゥルフ神話で自分も使っている超シンプルなダイスロールのできるサイトです。">
+<!-- pwa -->
+<link rel="manifest" href="./manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="./images/image192x192.png">
+<link rel="icon" type="image/png" href="./images/image512x512.png">
+<meta name="theme-color" content="#d5c3c9">
+<link href="./splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<link href="./splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+<!-- /pwa -->
+</head>
+<body>
+	<div class="dice dice-like"><h1 class="diceT" style="margin:0px;font-size:1.5em;word-break: keep-all;">超シンプル！<wbr>ダイスロール</h1><div class="diceB"><a href="/">サイトTOPへ</a><p>クトゥルフ神話でダイスロールするときに自分で作ったダイスのサイトなら面白いので作りました。<br>使い方はシンプルで使いたいダイスをタップするだけです。<br>好みの色にしてダイスロールをすることができます。</p><p>作っている間CSSのGrid LayoutとPWAが勉強になりました。</p><p>※1d100,1d50,1d10で0が出た場合それぞれ100,50,10になります。</p></div></div>
+	<div class="dice dice-like">
+		<div class="diceT">設定</div>
+		<div class="diceB" id="dicesettings">
+			<div style="display:flex;align-items:center;justify-content:center;">
+				<label for="colorH">色相</label>
+				<input type="range" id="colorH" style="background:linear-gradient(to right,hsl(0,60%,50%),hsl(60,60%,50%),hsl(120,60%,50%),hsl(180,60%,50%),hsl(240,60%,50%),hsl(300,60%,50%),hsl(360,60%,50%));-webkit-appearance:none;appearance:none;width:80%;height:20px;margin:0.3em;" min="0" max="360" step="18">
+			</div>
+			<div style="display:flex;align-items:center;justify-content:center;">
+				<label for="colorS">彩度</label>
+				<input type="range" id="colorS" style="-webkit-appearance:none;appearance:none;width:80%;height:20px;margin:0.3em;" min="0" max="100" step="5">
+			</div>
+			<div style="display:flex;align-items:center;justify-content:center;">
+				<label for="colorL">輝度</label>
+				<input type="range" id="colorL" style="-webkit-appearance:none;appearance:none;width:80%;height:20px;margin:0.3em;" min="0" max="100" step="5">
+			</div>
+			<div style="display:flex;align-items:center;justify-content:center;">
+				<label for="reqfullscreen">画面</label>
+				<div style="width:80%;margin:0.3em;">
+					<input id="reqfullscreen" type="button" value="全画面">
+				</div>
+			</div>
+			<details id="othersettings">
+				<summary>その他の設定</summary>
+				<div style="display:flex;align-items:center;justify-content:space-between;">
+					<label for="critical-select">クリティカル</label>
+					<div style="width:60%;margin:0.3em;">
+						<select style="width:100%;height:50px;font-size:20px;" id="critical-select">
+							<option value="0">無効</option>
+							<option value="1">1</option>
+							<option value="2">2以下</option>
+							<option value="3">4以下</option>
+							<option value="4">5以下</option>
+							<option value="5">5以下</option>
+							<option value="6">6以下</option>
+							<option value="7">7以下</option>
+						</select>
+					</div>
+				</div>
+				<div style="display:flex;align-items:center;justify-content:space-between;">
+					<label for="fumble-select">ファンブル</label>
+					<div style="width:60%;margin:0.3em;">
+						<select style="width:100%;height:50px;font-size:20px;" id="fumble-select">
+							<option value="95">95以上</option>
+							<option value="96">96以上</option>
+							<option value="97">97以上</option>
+							<option value="98">98以上</option>
+							<option value="99">99以上</option>
+							<option value="100">100</option>
+							<option value="101">無効</option>
+						</select>
+					</div>
+				</div>
+			</details>
+		</div>
+	</div>
+	<div class="dice" id="pagelink"><div class="diceT">このページへのリンク</div><div class="diceB"><img id="qrcodeImage" src="dice-QRcode.png" alt="https://naoto74.github.io/dice/" loading="lazy" width="100" height="100"></div><p style="word-break:break-all;font-size:60%;">https://naoto74.github.io/dice/</p></div>
+	<div class="dice dice-like" style="align-items:flex-start;"><div class="diceT">履歴</div><div class="diceB" id="diceLog"></div></div>
+	<div id="popupback1" style="display:none;position:fixed;top:0px;left:0px;width:100vw;height:100vh;background-color:rgba(0,0,0,0.4);"></div>
+	<div id="popup1" style="display:none;flex-direction:column;position:fixed;top:50%;left:50%;border:4px solid #000;padding:1em;transform:translate(-50%, -50%);width:80vw;height:auto;background-color:#eee;"><p>ルーレットに表示する文字を入力してください。</p><div id="popupdiv1" style="overflow-y:scroll;max-height:300px;"></div><div style="display:flex;"><input id="popupadddiv1" type="button" value="+追加" style="width:80px;height:30px;"><input id="popupclosediv1" type="button" value="閉じる" style="width:80px;height:30px"></div></div>
+	<div id="popupback2" style="display:none;position:fixed;top:0px;left:0px;width:100vw;height:100vh;background-color:rgba(0,0,0,0.4);"></div>
+	<div id="popup2" style="display:none;position:fixed;top:50%;left:50%;border:4px solid #000;transform:translate(-50%, -50%);width:90vmin;height:auto;background-color:#eee;"><img src="dice-QRcode.png" alt="https://naoto74.github.io/dice/" loading="lazy" width="100" height="100" style="width:100%;height:auto;image-rendering:pixelated;"></div>
+	<audio id="DiceSound" style="display:none;" src="diceAudio.mp3"></audio>
+</body>
+</html>

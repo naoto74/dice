@@ -1,0 +1,108 @@
+::-webkit-scrollbar{display:none;}
+html,body{
+	background-color:#fff;
+}
+body{
+	display:grid;
+	margin:0;
+	font-family:'メイリオ','Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+	grid-template-columns:repeat(auto-fit,400px);
+	grid-gap:16px;
+	justify-content:center;
+}
+input[type=button],button{
+	-webkit-appearance: none;
+	appearance: none;
+	border: 1px solid #000;
+}
+#dicesettings{
+	display:flex;
+	width:95%;
+	align-items:stretch;
+	flex-direction:column;
+	gap:1.5em;
+}
+svg{
+	user-select:none;
+	width:100px;
+	height:100px;
+}
+.roulette{
+	user-select:none;
+	width:300px;
+	height:300px;
+}
+.roulette text{
+	stroke:#000;
+	font-weight: normal;
+	dominant-baseline:middle;
+}
+.rouletteEdit{
+	width:80px;
+	height:50px;
+	font-size:24px;
+}
+#reqfullscreen{
+	width:80px;
+	height:50px;
+	font-size:20px;
+}
+@media screen and (max-width:480px){
+	body{grid-template-columns:repeat(auto-fit,calc(100vw - 10px));}
+	svg{width:70px;height:70px;}
+	.roulette{
+		user-select: none;
+		width: 85vmin;
+		height: auto;
+	}
+}
+.dice{
+	position:relative;
+	display:flex;
+	text-align: center;
+	align-items:center;
+	flex-direction:column;
+	font-size:2rem;
+	background:var(--bgcolor);
+	border-radius: 24px;
+	overflow: hidden;
+	box-shadow: 2px 1px 0px 0px #000;
+}
+.dice-like{
+	text-align: left;
+	font-size:1rem;
+	grid-column:1 / -1;
+}
+.diceT{
+	width:100%;
+	text-align:center;
+	background:rgba(0,0,0,0.2);
+	border-bottom: 1px solid #000;
+}
+.diceR{
+	font-size:2rem;
+	font-weight:bold;
+	text-align:center;
+	margin-bottom: 0;
+}
+.diceB{
+	margin:auto 0 auto 0;
+	padding:1rem;
+}
+#diceLog{
+	overflow-y:scroll;
+	will-change:transform;
+	max-height:300px;
+	width:100%;
+}
+#diceLog p{
+	margin:0.3em 0 0.3em 0;
+}
+input[type=range]::-webkit-slider-thumb{
+	-webkit-appearance:none;
+	appearance:none;
+	width:30px;
+	height:30px;
+	border:2px solid #000;
+	background:var(--bgcolor);
+}
